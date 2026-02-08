@@ -30,13 +30,35 @@ def occurs(ll:LinkedList, num: int) -> bool:
             if num == value:
                 return True
             return occurs(rest, num)
+        
+#Check linked list for duplicates
+def has_dup(ll:LinkedList) -> bool:
+    match ll:
+        case None:
+            return False
+        case LLNode(value,rest):
+            if occurs(rest, value):
+                return True
+            return has_dup(rest)
+    
+#helper to insert number
+def insertion_helper(ll:LinkedList, num: int) -> LinkedList:
+    if ll == None:
+        return LLNode(num, None)
+    else:
+        if num <= ll.value:
+            new_ll: LinkedList = LLNode(num, ll)
+        else:
+            rest_of_ll: LinkedList = ll.rest
+            new_ll = LLNode(ll.value, insertion_helper(rest_of_ll,num))
+    return new_ll
 
-def has_dup(ll:LinkedList) -> int:
-    pass
-
-def insertion_sort(ll:LinkedList) -> LinkedList:
-    pass
-
+#sort numbers in linked list      
+def insertion_sort(ll: LinkedList) -> LinkedList:
+    if ll == None:
+        return None
+    else:
+        return insertion_helper(insertion_sort(ll.rest), ll.value)
 linked1 = LLNode( 10, LLNode(11, LLNode(12, LLNode(13, None))))
 class Tests(unittest.TestCase):
     def test_range(self):

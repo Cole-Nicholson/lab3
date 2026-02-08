@@ -19,6 +19,7 @@ def example_graph_creation() -> None:
 # to emphasize that 'matplotlib' uses 'numpy''s specific array
 # type, which is different from the built-in Python array
 # type.
+def time_function(func:Callable, 
     x_numpy : np.ndarray = np.array( x_coords )
     y_numpy : np.ndarray = np.array( y_coords )
     plt.plot( x_numpy, y_numpy, label = 'log_2(x)' )
