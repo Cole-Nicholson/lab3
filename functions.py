@@ -72,6 +72,14 @@ class Tests(unittest.TestCase):
         self.assertEqual(occurs(linked1, 9), False)
         self.assertEqual(occurs(linked1, 13), True)
 
+    def test_has_dup(self):
+        dup_ll = LLNode(1, LLNode(2, LLNode(5, LLNode(3, LLNode(4, LLNode(2, LLNode(5, None)))))))
+        self.assertEqual(has_dup(dup_ll), True)
+
+    def test_insertion_sort(self):
+        test_ll = LLNode(1, LLNode(2, LLNode(5, LLNode(3, LLNode(4, LLNode(2, LLNode(5, None)))))))
+        self.assertEqual(insertion_sort(test_ll), LLNode(1, LLNode(2, LLNode(2, LLNode(3, LLNode(4, LLNode(5, LLNode(5, None))))))))
+
 
 if(__name__== '__main__'):
     unittest.main()
