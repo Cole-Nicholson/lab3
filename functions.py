@@ -13,7 +13,7 @@ class LLNode:
     rest: LinkedList
 
 #return a linked list of numbers from 0 to a max num
-def range(max_exclusive: int) -> LinkedList:
+def make_range(max_exclusive: int) -> LinkedList:
     #helper to build range
     def helper(current: int) -> LinkedList:
         if current == max_exclusive:
@@ -59,13 +59,14 @@ def insertion_sort(ll: LinkedList) -> LinkedList:
         return None
     else:
         return insertion_helper(insertion_sort(ll.rest), ll.value)
+    
 linked1 = LLNode( 10, LLNode(11, LLNode(12, LLNode(13, None))))
 class Tests(unittest.TestCase):
-    def test_range(self):
-        self.assertEqual(range(4), LLNode(0,LLNode(1,LLNode(2,LLNode(3,None)))))
-        self.assertEqual(range(0), None)
-        self.assertEqual(range(1), LLNode(0,None))
-        self.assertEqual(range(7), LLNode(0,LLNode(1,LLNode(2,LLNode(3,LLNode(4, LLNode(5, LLNode(6, None))))))))
+    def test_make_range(self):
+        self.assertEqual(make_range(4), LLNode(0,LLNode(1,LLNode(2,LLNode(3,None)))))
+        self.assertEqual(make_range(0), None)
+        self.assertEqual(make_range(1), LLNode(0,None))
+        self.assertEqual(make_range(7), LLNode(0,LLNode(1,LLNode(2,LLNode(3,LLNode(4, LLNode(5, LLNode(6, None))))))))
 
     def test_occurs(self):
         self.assertEqual(occurs(linked1, 10), True)
